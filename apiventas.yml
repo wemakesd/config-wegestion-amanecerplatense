@@ -25,19 +25,7 @@
       preferIpAddress: true
       instanceId : ${serverIP}
 
-## TENANTS
-tenants:
-  datasources:
-    Test:
-      jdbcUrl: jdbc:sqlserver://${serverIP}:1433;databaseName=WGVentasDB
-      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
-      username: wegestion
-      password: wegestion2019+
-    Tentant1:
-      jdbcUrl: jdbc:sqlserver://${serverIP}:1433;databaseName=WGVentasDB_Tenant1
-      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
-      username: wegestion
-      password: wegestion2019+
+
 
 ##HEALTH.
 management: 
