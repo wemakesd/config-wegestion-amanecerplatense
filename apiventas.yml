@@ -1,0 +1,63 @@
+##SERVER.
+  server:
+    port: 8085
+  spring:
+    application:
+      name: apiventas
+    profiles:
+      active: production
+    session:
+      jdbc:
+        initialize-schema: never
+    jpa:
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+          dialect: org.hibernate.dialect.SQLServer2012Dialect
+          naming:
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+          ddl-auto: none
+
+##EUREKA
+  eureka:
+    instance:
+      preferIpAddress: true
+      instanceId : ${serverIP}
+
+## TENANTS
+tenants:
+  datasources:
+    Test:
+      jdbcUrl: jdbc:sqlserver://${serverIP}:1433;databaseName=WGVentasDB
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      username: wegestion
+      password: wegestion2019+
+    Tentant1:
+      jdbcUrl: jdbc:sqlserver://${serverIP}:1433;databaseName=WGVentasDB_Tenant1
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      username: wegestion
+      password: wegestion2019+
+
+##HEALTH.
+management: 
+  endpoints:
+    web:
+      exposure:
+        include: *
+    health:
+      show-details: when_authorized
+info:
+  team:
+    name: API VENTAS
+    dev: WEMAKE
+  version: 1.0
+  project:
+    owner: WEMAKE
+
+##JWT.
+  application:
+    jwt: 
+      secretKey: securesecuresecuresecuresecuresecuresecuresecuresecuresecuresecure
+      tokenPrefix: Bearer
+      tokenExpirationAfterDays: 1
